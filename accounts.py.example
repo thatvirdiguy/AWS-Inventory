@@ -1,6 +1,6 @@
 accounts = [
   {
-    'name': '<insert AWS Account #1 Name here>,
+    'name': '<insert AWS Account #1 name here>,
     'aws_access_key_id':'<insert IAM user access key id here>',
     'aws_secret_access_key':'<insert IAM user secret access key here>',
     'regions': [ 'us-west-1', 'sa-east-1', 'eu-west-1', 'ap-southeast-1' ]

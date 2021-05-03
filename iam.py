@@ -33,16 +33,19 @@ def build_iam_json():
       # policies
       iam_policies = iam.list_user_policies(UserName=iam_username)['PolicyNames']
       
-      iamd = {
+      iamd = { 
+               'account': account,
                'iam_username': iam_username,
                'iam_userid': iam_userid,
                'iam_groups': iam_groups,
                'iam_policies': iam_policies
              }
 
-    with open('data/iam.json', 'w') as f:
-      json.dump(bucketl, f, indent=4)
-      print("All done with building IAM info...")
+      iaml.append(iamd)
+
+  with open('data/iam.json', 'w') as f:
+    json.dump(iaml, f, indent=4)
+    print("Done building IAM info...")
 
 if __name__ == "__main__":
   build_iam_json()

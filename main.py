@@ -4,6 +4,7 @@ import boto3
 from ec2 import build_ec2_json
 from vpc import build_vpc_json
 from s3 import build_s3_json
+from iam import build_iam_json
 
 print("Collecting EC2 info...")
 try:

@@ -89,11 +89,11 @@ def build_ec2_json():
                    'instance_publicIP': instance_publicIP
                  }
                     
-      ec2l.append(ec2d)
+          ec2l.append(ec2d)
 
-    with open('data/ec2.json', 'w') as f:
-      json.dump(ec2l, f, indent=4)
-      print("All done with building EC2 info...")
+  with open('data/ec2.json', 'w') as f:
+    json.dump(ec2l, f, indent=4)
+    print("Done building EC2 info...")
 
 if __name__ == "__main__":
   build_ec2_json()

@@ -3,7 +3,7 @@ import boto3
 from accounts import accounts
 
 def build_vpc_json():
-  vpcl = {}
+  vpcl = []
   for account in accounts:
     for region in account['regions']:
       try:
@@ -42,7 +42,7 @@ def build_vpc_json():
         vpc_endpoints=[]
         try:
           endpoint_details = ec2.describe_vpc_endpoints(Filters=[{'Name': 'vpc-id','Values': [vpc_id]}])['VpcEndpoints']
-          for endpoint in endpoint_details
+          for endpoint in endpoint_details:
             vpc_endpointType = endpoint.get('VpcEndpointType')
             vpc_endpointServiceName = endpoint.get('ServiceName')
             endpoint = {
@@ -52,7 +52,7 @@ def build_vpc_json():
             vpc_endpoints.append(endpoint)
         except:
           vpc_endpoints = {
-                            'vpc_endpointType': 'N/A'
+                            'vpc_endpointType': 'N/A',
                             'vpc_endpointServiceName': 'N/A'
                           }
         # peering connections
@@ -92,9 +92,11 @@ def build_vpc_json():
                  'vpc_peerings': vpc_peerings
                }
 
-    with open('data/vpc.json', 'w') as f:
-      json.dump(bucketl, f, indent=4)
-      print("All done with building VPC info...")
+        vpcl.append(vpcd)
+
+  with open('data/vpc.json', 'w') as f:
+    json.dump(vpcl, f, indent=4)
+    print("Done building VPC info...")
 
 if __name__ == "__main__":
   build_vpc_json()

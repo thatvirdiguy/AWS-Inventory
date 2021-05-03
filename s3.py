@@ -61,9 +61,9 @@ def build_s3_json():
                     
       bucketl.append(bucketd)
 
-    with open('data/s3.json', 'w') as f:
-      json.dump(bucketl, f, indent=4)
-      print("All done with building S3 info...")
+  with open('data/s3.json', 'w') as f:
+    json.dump(bucketl, f, indent=4)
+    print("Done building S3 info...")
 
 if __name__ == "__main__":
   build_s3_json()

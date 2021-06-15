@@ -2,6 +2,8 @@
 
 Python script to scan an AWS environment and build an inventory of resources, along with their details and how they are related to each other.
 
+**Note**: I used to manage and develop something similar for one of my previous employers. That did quite a lot more than this, rather basic, data extraction and manipulation, building an internal-only website using HTML toolkits such as Bootstrap and DataTables. I have purposefully not put that part in since that is and should be their proprietary code.
+
 ## Architecture
 
 The script is broken down into four modules, one for each of the four core services AWS provides: EC2, VPC, S3, and IAM. The main script, `main.py`, calls these four modules. The findings are put as json files in a separate folder/directory called `data`.
